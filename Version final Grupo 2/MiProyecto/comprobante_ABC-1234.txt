@@ -1,0 +1,8 @@
+COMPROBANTE DE MATRICULA
+Propietario: JOSE
+Placa: ABC-1234
+Tipo: Bus
+Avaluo Base: 48166.10
+Multa: 150.00
+Descuento: 4816.61
+TOTAL A PAGAR: 43499.49
