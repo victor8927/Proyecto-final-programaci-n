@@ -12,8 +12,8 @@ void inicializarUsuarios(Usuario usuarios[], int len) {
 	}
 }
 
-// Valida que el nombre de usuario y la contraseña no superen MAX_USERNAME_LEN/MAX_PASSWORD_LEN
-// y que no estén vacíos.
+// Valida que el nombre de usuario y la contraseÃ±a no superen MAX_USERNAME_LEN/MAX_PASSWORD_LEN
+// y que no estÃ©n vacÃ­os.
 int validarCredenciales(const char *username, const char *password) {
 	if (strlen(username) == 0 || strlen(username) > MAX_USERNAME_LEN) {
 		printf("\n[Error] El usuario debe tener entre 1 y %d caracteres.\n", MAX_USERNAME_LEN);
@@ -44,11 +44,11 @@ int registrarUsuario(Usuario usuarios[], int *numUsuarios) {
 	do {
 		printf("Ingrese nuevo nombre de usuario (max %d caracteres): ", MAX_USERNAME_LEN);
 		fgets(temp_username, sizeof(temp_username), stdin);
-		temp_username[strcspn(temp_username, "\n")] = '\0'; // Eliminar salto de línea
+		temp_username[strcspn(temp_username, "\n")] = '\0'; // Eliminar salto de lÃ­nea
 		
 		printf("Ingrese nueva contrasena (max %d caracteres): ", MAX_PASSWORD_LEN);
 		fgets(temp_password, sizeof(temp_password), stdin);
-		temp_password[strcspn(temp_password, "\n")] = '\0'; // Eliminar salto de línea
+		temp_password[strcspn(temp_password, "\n")] = '\0'; // Eliminar salto de lÃ­nea
 		
 		valido = validarCredenciales(temp_username, temp_password);
 		if (!valido) {
@@ -58,14 +58,14 @@ int registrarUsuario(Usuario usuarios[], int *numUsuarios) {
 			continue;
 		}
 		
-		// Convertir a mayúsculas si es necesario, o mantener como está si quieres sensibilidad a mayús/minús
+		// Convertir a mayÃºsculas si es necesario, o mantener como estÃ¡ si quieres sensibilidad a mayÃºs/minÃºs
 		// convertirMayusculas(temp_username); // Descomenta si quieres usuarios case-insensitive
 		
 		// Verificar si el usuario ya existe
 		for (int i = 0; i < *numUsuarios; i++) {
 			if (strcmp(usuarios[i].username, temp_username) == 0) {
 				printf("\n[Error] El nombre de usuario '%s' ya existe. Intente con otro.\n", temp_username);
-				valido = 0; // Marcar como inválido para repetir el bucle
+				valido = 0; // Marcar como invÃ¡lido para repetir el bucle
 				esperar();
 				limpiarPantalla();
 				printf("--- REGISTRO DE USUARIO ---\n"); // Volver a mostrar el encabezado
@@ -88,7 +88,7 @@ int registrarUsuario(Usuario usuarios[], int *numUsuarios) {
 int iniciarSesion(const Usuario usuarios[], int numUsuarios) {
 	char username_input[100];
 	char password_input[100];
-	int intentos = 1;
+	int intentos = 3;
 	
 	limpiarPantalla();
 	printf("--- INICIO DE SESION ---\n");
@@ -109,7 +109,7 @@ int iniciarSesion(const Usuario usuarios[], int numUsuarios) {
 				strcmp(usuarios[i].password, password_input) == 0) {
 				printf("\n[Inicio de Sesion Exitoso] Bienvenido, %s!\n", username_input);
 				pausar();
-				return 1; // Sesión iniciada correctamente
+				return 1; // SesiÃ³n iniciada correctamente
 			}
 		}
 		
@@ -122,7 +122,7 @@ int iniciarSesion(const Usuario usuarios[], int numUsuarios) {
 	
 	printf("\n[Bloqueado] Demasiados intentos fallidos. Volviendo al menu principal.\n");
 	pausar();
-	return 0; // Falló el inicio de sesión
+	return 0; // FallÃ³ el inicio de sesiÃ³n
 }
 
 
